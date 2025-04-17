@@ -1,0 +1,32 @@
+<div style="text-align: center; margin-top: 50px;">
+       <h2>Array Calculator</h2>
+     
+       <div *ngFor="let num of numbers(); let i = index">
+         <input type="number"
+                [ngModel]="num"
+                (ngModelChange)="updateNumber($event, i)"
+                placeholder="Enter number {{ i + 1 }}" />
+         <button (click)="removeNumber(i)">Remove</button>
+       </div>
+     
+       <br />
+       <button (click)="addNumber()">Add Number</button>
+       <br /><br />
+     
+       <select [ngModel]="operation()"
+               (ngModelChange)="operation.set($event)">
+         <option value="">--Select Operation--</option>
+         <option value="sum">Sum</option>
+         <option value="avg">Average</option>
+         <option value="min">Minimum</option>
+         <option value="max">Maximum</option>
+         <option value="mul">Multiply</option>
+       </select>
+       <br /><br />
+     
+       <button (click)="calculate()">Calculate</button>
+       <br /><br />
+     
+       <div><strong>Result: </strong>{{ result() }}</div>
+     </div>
+     
